@@ -11,6 +11,17 @@ const Createad = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (number.length !== 10 ) {
+      alert('Phone number must be 10 digits ');
+      return
+     
+    } else if(description.length < 10){
+      alert('description must be some long above 15 words ');
+      return
+    }
+
+
     try {
       const formData = new FormData();
       formData.append('title', title);

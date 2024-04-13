@@ -62,8 +62,9 @@ function App() {
 
 
         <div className="grid-container">
-          <div className="small-column   rounded " style={{zIndex:'1000', height: '100vh'}} >
-            <Link to="/">   <HowToVoteTwoToneIcon   style={{ width: "40px", height: "80px",color:'black',position:'fixed',top:'80px' }}>
+          
+          <div className="small-column   rounded " style={{ zIndex: '1000', height: '100vh' }} >
+            <Link to="/">   <HowToVoteTwoToneIcon style={{ width: "40px", height: "80px", color: 'black', position: 'fixed', top: '80px' }}>
               home
             </HowToVoteTwoToneIcon>
             </Link>
@@ -71,42 +72,48 @@ function App() {
 
 
             <Link to="/Home">
-              <HomeWorkTwoToneIcon style={{ width: "40px", height: "80px", color:'black',position:'fixed',top:'150px' }}>
+              <HomeWorkTwoToneIcon style={{ width: "40px", height: "80px", color: 'black', position: 'fixed', top: '150px' }}>
                 Home
               </HomeWorkTwoToneIcon>
             </Link>
 
             <Link to="/Mobile">
-              <ChargingStationTwoToneIcon style={{ width: "40px", height: "80px", color:'black',position:'fixed',top:'220px' }}>
+              <ChargingStationTwoToneIcon style={{ width: "40px", height: "80px", color: 'black', position: 'fixed', top: '220px' }}>
                 Mobile
               </ChargingStationTwoToneIcon>
             </Link>
 
 
             <Link to="/Pets">
-              <PetsTwoToneIcon style={{ width: "40px", height: "80px", color:'black',position:'fixed',top:'290px' }}>
+              <PetsTwoToneIcon style={{ width: "40px", height: "80px", color: 'black', position: 'fixed', top: '290px' }}>
                 Pets
               </PetsTwoToneIcon>
             </Link>
 
             <Link to="/Clothes">
-              <CheckroomTwoToneIcon style={{ width: "40px", height: "80px", color:'black',position:'fixed',top:'360px' }}>
+              <CheckroomTwoToneIcon style={{ width: "40px", height: "80px", color: 'black', position: 'fixed', top: '360px' }}>
                 Clothes
               </CheckroomTwoToneIcon>
             </Link>
 
             <Link to="/Other">
-              <AltRouteTwoToneIcon style={{ width: "40px", height: "80px" , color:'black',position:'fixed',top:'430px'}}>
+              <AltRouteTwoToneIcon style={{ width: "40px", height: "80px", color: 'black', position: 'fixed', top: '430px' }}>
                 Other
               </AltRouteTwoToneIcon>
             </Link>
 
-            <AltRouteTwoToneIcon style={{ width: "40px", height: "80px" , color:'white'}}>
-                Other
-              </AltRouteTwoToneIcon>
+            <AltRouteTwoToneIcon style={{ width: "40px", height: "80px", color: 'white' }}>
+              Other
+            </AltRouteTwoToneIcon>
 
           </div>
-          <div className="large-column" style={{marginTop:'80px',marginBottom:'70px'}}>
+
+
+
+
+
+          
+          <div className="large-column" style={{ marginTop: '80px', marginBottom: '70px' }}>
 
 
 
@@ -119,8 +126,8 @@ function App() {
               <Route path="/Pets" element={<Pets />} />
               <Route path="/Clothes" element={<Clothes />} />
               <Route path="/Other" element={<Other />} />
-              <Route path="/login-singup" element={<Users/>} />
-              <Route path="/UserProfil" element={<UserProfile/>} />
+              <Route path="/login-singup" element={<Users />} />
+              <Route path="/UserProfil" element={<UserProfile />} />
               <Route path="/createad" element={<Createad></Createad>} />
               {/* this is route for popup  */}
 

@@ -184,7 +184,7 @@ const Adlist = () => {
     }
   };
 
-  console.log(ads);
+ 
 
   return (
     <div className="container sideBorder">
@@ -211,11 +211,11 @@ const Adlist = () => {
                         </div>
                       ))}
                     </div>
-                    <button className="carousel-control-prev" type="button" data-bs-target={`#carousel-${ad._id}`} data-bs-slide="prev" style={{ display: 'none' }}>
+                    <button className="carousel-control-prev" type="button" data-bs-target={`#carousel-${ad._id}`} data-bs-slide="prev" style={{  }}>
                       <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                       <span className="visually-hidden">Previous</span>
                     </button>
-                    <button className="carousel-control-next" type="button" data-bs-target={`#carousel-${ad._id}`} data-bs-slide="next" style={{ display: 'none' }}>
+                    <button className="carousel-control-next" type="button" data-bs-target={`#carousel-${ad._id}`} data-bs-slide="next" style={{  }}>
                       <span className="carousel-control-next-icon" aria-hidden="true"></span>
                       <span className="visually-hidden">Next</span>
                     </button>
@@ -244,7 +244,7 @@ const Adlist = () => {
                     </ol>
                   </div>
                 ) : (
-                  <div>No images available</div>
+                  <div> No images available</div>
                 )}
                 <div className="card-body">
                   <h5 className="card-title" style={{ fontWeight: '800' }}>{ad.title}</h5>
@@ -253,7 +253,7 @@ const Adlist = () => {
                   {ad.createdBy && <p className="card-text" style={{ fontWeight: '400', fontSize: '15px' }}><small className="text-muted">Created by: <span style={{ color: 'black' }}> {ad.createdBy.username}</span></small></p>} {/* Display username */}
                   <p className="card-text" style={{ fontWeight: '400', fontSize: '12px' }}><small className="text-muted">Category: <strong> #{ad.category}</strong></small></p>
                   <hr />
-                  <h5 className="card-text" style={{ fontWeight: '800' }} >₹{ad.price}</h5>
+                  <h5 className="card-text" style={{ fontWeight: '800' }} >₹{ad.price.toLocaleString()}</h5>
                 </div>
               </div>
             </div>

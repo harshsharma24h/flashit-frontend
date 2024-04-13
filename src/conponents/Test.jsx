@@ -7,8 +7,8 @@ function Test() {
 
     return (
     <>
-        <div className="card-container">
-            <div className="container">
+        <div className="card-container ">
+            <div className="container sideBorder">
                 <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4  ">
                     {sd.map((item, index) => (
                         <div className="col  mb-4" key={index}>
