@@ -43,7 +43,7 @@ function Navbar() {
             <nav className="navbar navbar-warning bg-info shadow rounded fixed-top"> {/* Add 'fixed-top' class to make the navbar fixed to the top */}
                 <div className="container-fluid">
                     <a className="navbar-brand">
-                        <Link className='text' to="/">  <span className='text'> 🟡🟡FlashIT   </span> </Link>
+                        <Link className='text' to="/">  <span className='text'> 🟡🟡FlashIT  TEST  </span> </Link>
                     </a>
                     <div className="ms-auto">
                         {YNvalue ? (
