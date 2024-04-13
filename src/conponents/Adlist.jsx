@@ -249,11 +249,11 @@ const Adlist = () => {
                 <div className="card-body">
                   <h5 className="card-title" style={{ fontWeight: '800' }}>{ad.title}</h5>
                   <p className="card-text" style={{ fontWeight: '400', fontSize: '12px' }}>{ad.description}</p>
-                  <p className="card-text" style={{ fontWeight: '400', fontSize: '15px' }}><small className="text-muted" alt="please login forst">{YNvalue ? ad.number : "91XXXXXX79"}</small></p>
+                  <p className="card-text" style={{ fontWeight: '400', fontSize: '15px' }}><small className="text-muted" alt="please login forst">Number: <strong> {YNvalue ? ad.number : "91XXXXXX79"}</strong></small></p>
                   {ad.createdBy && <p className="card-text" style={{ fontWeight: '400', fontSize: '15px' }}><small className="text-muted">Created by: <span style={{ color: 'black' }}> {ad.createdBy.username}</span></small></p>} {/* Display username */}
                   <p className="card-text" style={{ fontWeight: '400', fontSize: '12px' }}><small className="text-muted">Category: <strong> #{ad.category}</strong></small></p>
                   <hr />
-                  <h5 className="card-text" style={{ fontWeight: '800' }} >₹{ad.price.toLocaleString()}</h5>
+                  <h5 className="card-text" style={{ fontWeight: '800' }} >₹{ad.price.toLocaleString('en-IN')}</h5>
                 </div>
               </div>
             </div>

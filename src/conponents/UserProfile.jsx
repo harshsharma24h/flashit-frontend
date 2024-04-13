@@ -159,6 +159,25 @@ const UserProfile = () => {
     fetchUserProfile();
   }, []);
 
+
+
+  const handleLogout = async () => {
+    try {
+      const response = await fetch('https://flashit-harsh-sharma.onrender.com/logout', {
+        method: 'POST',
+      });
+
+      if (response.ok) {
+        localStorage.removeItem('token');
+        window.location.href = '/login-singup';
+      } else {
+        console.error('Failed to logout');
+      }
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
+  };
+
   const handleDelete = async (id) => {
     try {
       const response = await fetch(`https://flashit-harsh-sharma.onrender.com/delete-ad/${id}`, {
@@ -180,7 +199,19 @@ const UserProfile = () => {
   };
 
   if (isLoading) {
-    return <div><Test /></div>;
+    return <div>
+      <div className='border p-3 p-md-5 shadow rounded my-3'>
+        <h4>User Name of the user: <span className="text-danger">loading...</span></h4>
+        <h6>Total Number Of Ads Created By User: <span className="text-danger">loading...</span></h6>
+        <div className="d-flex flex-column flex-md-row justify-content-md-start justify-content-center align-items-center">
+          <Link to="/createad" className="text-decoration-none">
+            <button type="button" className="btn btn-secondary my-2 my-md-0 mx-0 mx-md-1">Create Ad</button>
+          </Link>
+          <button type="button" onClick={handleLogout} className="btn btn-warning mx-0 mx-md-1">Logout</button>
+        </div>
+      </div>
+
+      <Test /></div>;
   }
 
   if (error) {
@@ -191,35 +222,20 @@ const UserProfile = () => {
     return <div>No user data found</div>;
   }
 
-  const handleLogout = async () => {
-    try {
-      const response = await fetch('https://flashit-harsh-sharma.onrender.com/logout', {
-        method: 'POST',
-      });
-
-      if (response.ok) {
-        localStorage.removeItem('token');
-        window.location.href = '/login-singup';
-      } else {
-        console.error('Failed to logout');
-      }
-    } catch (error) {
-      console.error('Error logging out:', error);
-    }
-  };
+ 
 
   return (
     <div className='poppinstext mx-3'>
       <div className='border p-3 p-md-5 shadow rounded my-3'>
-  <h4>User Name of the user: <span className="text-danger">{userData.username}</span></h4>
-  <h6>Total Number Of Ads Created By User: <span className="text-danger">{userData.adsPosted.length}</span></h6>
-  <div className="d-flex flex-column flex-md-row justify-content-md-start justify-content-center align-items-center">
-    <Link to="/createad" className="text-decoration-none">
-      <button type="button" className="btn btn-secondary my-2 my-md-0 mx-0 mx-md-1">Create Ad</button>
-    </Link>
-    <button type="button" onClick={handleLogout} className="btn btn-warning mx-0 mx-md-1">Logout</button>
-  </div>
-</div>
+        <h4>User Name of the user: <span className="text-danger">{userData.username}</span></h4>
+        <h6>Total Number Of Ads Created By User: <span className="text-danger">{userData.adsPosted.length}</span></h6>
+        <div className="d-flex flex-column flex-md-row justify-content-md-start justify-content-center align-items-center">
+          <Link to="/createad" className="text-decoration-none">
+            <button type="button" className="btn btn-secondary my-2 my-md-0 mx-0 mx-md-1">Create Ad</button>
+          </Link>
+          <button type="button" onClick={handleLogout} className="btn btn-warning mx-0 mx-md-1">Logout</button>
+        </div>
+      </div>
 
       <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
         {userData.adsPosted.map(ad => (
