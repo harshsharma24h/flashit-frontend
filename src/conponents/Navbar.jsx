@@ -51,7 +51,7 @@ function Navbar() {
                                 <Link to="/UserProfil">
                                     <AccountCircleTwoToneIcon style={{ width: "40px", height: "30px", color: 'black' }} />
                                 </Link>
-                                <LogoutIcon onClick={handleLogout} alt="logout"></LogoutIcon>
+                                <LogoutIcon onClick={handleLogout} ></LogoutIcon>
                                 
                             </div>
                         ) :
