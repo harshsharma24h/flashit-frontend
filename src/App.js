@@ -21,6 +21,7 @@ import Users from './conponents/Users';
 import Counter from './conponents/Counter';
 import UserProfile from './conponents/UserProfile';
 import Footer from './conponents/Footer';
+// import Pra from './conponents/Pra';
 
 function App() {
   const [showPopup, setShowPopup] = useState(false);
@@ -50,6 +51,7 @@ function App() {
   return (
     <Router> {/* Wrap your entire app with Router */}
       <>
+      {/* <Pra></Pra> */}
         {/* <Counter/> */}
         <Navbar />
 

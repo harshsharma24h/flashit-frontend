@@ -143,7 +143,7 @@ const Adlist = () => {
     };
 
     fetchAds();
-  }, [ads]);
+  }, []);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
