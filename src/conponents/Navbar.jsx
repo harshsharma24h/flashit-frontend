@@ -55,7 +55,7 @@ function Navbar() {
     return (
         <>
             <nav className="navbar navbar-warning bg-info shadow rounded fixed-top"> {/* Add 'fixed-top' class to make the navbar fixed to the top */}
-                <div className="container-fluid">
+                <div  className="container-fluid">
                     <a className="navbar-brand">
                         <Link className='text' to="/">  <span className='text'> 🟡🟡FlashIT   </span> </Link>
                     </a>
@@ -64,9 +64,9 @@ function Navbar() {
                         {YNvalue ? (
                             <div>
                                 <Link to="/UserProfil">
-                                    <AccountCircleTwoToneIcon style={{ width: "40px", height: "30px", color: 'black' }} />
+                                    <AccountCircleTwoToneIcon alt="user" style={{ width: "40px", height: "30px", color: 'black' }} />
                                 </Link>
-                                <LogoutIcon onClick={handleLogout} ></LogoutIcon>
+                                <LogoutIcon  alt="logout" onClick={handleLogout} ></LogoutIcon>
 
                             </div>
                         ) :
