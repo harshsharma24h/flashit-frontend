@@ -6,6 +6,8 @@ import { YesTrue, NoFalse } from '../reducers/singinSingupReducer';
 import Popup from './Popup';
 import { ProgressBar } from "react-progressbar-fancy";
 import LogoutIcon from '@mui/icons-material/Logout';
+import LocalMallIcon from '@mui/icons-material/LocalMall';
+
 
 function Navbar() {
     const [showPopup, setShowPopup] = useState(false);
@@ -20,6 +22,18 @@ function Navbar() {
 
     const dispatch = useDispatch();
     const YNvalue = useSelector((state) => state.YNvalue.value);
+
+
+    const checkLogin = () => {
+        let a = localStorage.getItem('token')
+
+        if (a && a.length !== 0) {
+            dispatch(NoFalse())
+        }
+    }
+
+    checkLogin()
+
 
     const handleLogout = async () => {
         try {
@@ -45,6 +59,7 @@ function Navbar() {
                     <a className="navbar-brand">
                         <Link className='text' to="/">  <span className='text'> 🟡🟡FlashIT   </span> </Link>
                     </a>
+
                     <div className="ms-auto">
                         {YNvalue ? (
                             <div>
@@ -52,7 +67,7 @@ function Navbar() {
                                     <AccountCircleTwoToneIcon style={{ width: "40px", height: "30px", color: 'black' }} />
                                 </Link>
                                 <LogoutIcon onClick={handleLogout} ></LogoutIcon>
-                                
+
                             </div>
                         ) :
                             (
@@ -61,6 +76,13 @@ function Navbar() {
                                 </Link>
                             )}
                     </div>
+                    {/* <button type="button" class="btn btn-primary position-relative">
+                        cart
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            99+
+                            <span class="visually-hidden">unread messages</span>
+                        </span>
+                    </button> */}
                 </div>
             </nav>
         </>

@@ -112,38 +112,60 @@
 
 
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect ,useMemo} from 'react';
 import loadingImage from '../images/loading.gif';
 import '../App.css';
 import Card from './Card';
 import Test from './Test';
 import { useSelector, useDispatch } from 'react-redux';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+
+
+
+
+
 
 const Adlist = () => {
   const [ads, setAds] = useState([]);
   const [loading, setLoading] = useState(true);
   const YNvalue = useSelector((state) => state.YNvalue.value);
+  const [fav, setFav] = useState([])
+  const [cart, setCart] = useState([])
+
+
+
+  const fetchAds = async () => {
+    try {
+      const response = await fetch('https://flashit-harsh-sharma.onrender.com/get-ads');
+      if (response.ok) {
+        const data = await response.json();
+        const latest = data.reverse();
+        console.log('all ads', data);
+        setAds(latest);
+        setLoading(false);
+      } else {
+        throw new Error('Failed to fetch ads.');
+      }
+    } catch (error) {
+      console.error('Error fetching ads:', error);
+    }
+  };
+
+
+  const memoizedAds = useMemo(() => ads, [ads]);
+
 
   useEffect(() => {
-    const fetchAds = async () => {
-      try {
-        const response = await fetch('https://flashit-harsh-sharma.onrender.com/get-ads');
-        if (response.ok) {
-          const data = await response.json();
-          const latest = data.reverse();
-          console.log('all ads', data);
-          setAds(latest);
-          setLoading(false);
-        } else {
-          throw new Error('Failed to fetch ads.');
-        }
-      } catch (error) {
-        console.error('Error fetching ads:', error);
-      }
-    };
-
-    fetchAds();
+    if (ads.length === 0) {
+      fetchAds();
+    }
   }, []);
+
+
+
+
+
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -152,6 +174,17 @@ const Adlist = () => {
 
     return () => clearInterval(intervalId);
   }, []); // Run this effect only once on component mount
+
+
+
+
+
+
+
+
+
+
+
 
   const moveNext = () => {
     ads.forEach((ad) => {
@@ -184,15 +217,54 @@ const Adlist = () => {
     }
   };
 
- 
+
+
+  const Addtocart = (iteam) => {
+    let a = ads.filter((e, i) => (
+      iteam == i
+    ))
+    setCart(list => [...list, a])
+    console.log(cart)
+  }
+
+
+  const removFav = (i) => {
+    let a = fav.filter((e, ind) => (
+      e !== i
+    ))
+    console.log(a, "fromfilter")
+    setFav(a)
+  }
+
+
+
+  const addFav = (i) => {
+    console.log(fav, 'this from addfav')
+    if (!fav.includes(i)) {
+
+      const b = ads.filter((e, index) => (
+        i == index
+      ))
+
+
+      setFav(b)
+      console.log(fav, 'this from addfav')
+    }
+
+
+
+  }
+
 
   return (
     <div className="container sideBorder">
+
+
       {loading ? (
         <Test />
       ) : (
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-          {ads.map((ad) => (
+          {memoizedAds.map((ad, index) => (
             <div key={ad._id} className="col mb-4">
               <div className="card animate" style={{ borderRadius: '15px' }}>
                 {ad.images && ad.images.length > 0 ? (
@@ -211,11 +283,11 @@ const Adlist = () => {
                         </div>
                       ))}
                     </div>
-                    <button className="carousel-control-prev" type="button" data-bs-target={`#carousel-${ad._id}`} data-bs-slide="prev" style={{  }}>
+                    <button className="carousel-control-prev" type="button" data-bs-target={`#carousel-${ad._id}`} data-bs-slide="prev" style={{}}>
                       <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                       <span className="visually-hidden">Previous</span>
                     </button>
-                    <button className="carousel-control-next" type="button" data-bs-target={`#carousel-${ad._id}`} data-bs-slide="next" style={{  }}>
+                    <button className="carousel-control-next" type="button" data-bs-target={`#carousel-${ad._id}`} data-bs-slide="next" style={{}}>
                       <span className="carousel-control-next-icon" aria-hidden="true"></span>
                       <span className="visually-hidden">Next</span>
                     </button>
@@ -253,11 +325,37 @@ const Adlist = () => {
                   {ad.createdBy && <p className="card-text" style={{ fontWeight: '400', fontSize: '15px' }}><small className="text-muted">Created by: <span style={{ color: 'black' }}> {ad.createdBy.username}</span></small></p>} {/* Display username */}
                   <p className="card-text" style={{ fontWeight: '400', fontSize: '12px' }}><small className="text-muted">Category: <strong> #{ad.category}</strong></small></p>
                   <hr />
-                  <h5 className="card-text" style={{ fontWeight: '800' }} >₹{ad.price.toLocaleString('en-IN')}</h5>
+                  <span> <h5 className="card-text" style={{ fontWeight: '800' }} >₹{ad.price.toLocaleString('en-IN')}</h5> 
+                  {/* {fav.includes(ad) ? <FavoriteIcon onClick={() => removFav(index)} /> : <FavoriteBorderIcon onClick={() => addFav(index)} />}   */}
+                  </span>
+
+
+
+
+
+
+
+
+                  {/* <button onClick={() => Addtocart(index)} type="button" class="btn btn-primary position-relative" style={{ position: 'fixed' }}>
+                    Add to Cart
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                      {cart.length}
+                      <span class="visually-hidden">unread messages</span>
+                    </span>
+                  </button> */}
                 </div>
               </div>
             </div>
           ))}
+          {<>{
+            fav.map((hm) => (
+              <h5 >{hm.title
+}</h5>
+            ))}
+
+          </>}
+
+
         </div>
       )}
     </div>

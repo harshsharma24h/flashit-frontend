@@ -21,7 +21,11 @@ import Users from './conponents/Users';
 import Counter from './conponents/Counter';
 import UserProfile from './conponents/UserProfile';
 import Footer from './conponents/Footer';
+import Test2 from './conponents/Test2';
+import Test5 from './conponents/Test5';
 // import Pra from './conponents/Pra';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import Addtocart from './conponents/Addtocart';
 
 function App() {
   const [showPopup, setShowPopup] = useState(false);
@@ -51,20 +55,23 @@ function App() {
   return (
     <Router> {/* Wrap your entire app with Router */}
       <>
-      {/* <Pra></Pra> */}
+        {/* <Pra></Pra> */}
         {/* <Counter/> */}
+
         <Navbar />
 
         {/* <Createad></Createad> */}
         {/* <Popup></Popup> */}
         {/* <UserProfile></UserProfile> */}
         {/* <Users></Users> */}
-
+        {/* <Addtocart></Addtocart> */}
+        {/* <Test5></Test5> */}
+        {/* <Test2></Test2> */}
 
 
 
         <div className="grid-container">
-          
+ 
           <div className="small-column   rounded " style={{ zIndex: '1000', height: '100vh' }} >
             <Link to="/">   <HowToVoteTwoToneIcon style={{ width: "40px", height: "80px", color: 'black', position: 'fixed', top: '80px' }}>
               home
@@ -108,13 +115,13 @@ function App() {
               Other
             </AltRouteTwoToneIcon>
 
-          </div>
+          </div> 
 
 
 
 
 
-          
+
           <div className="large-column" style={{ marginTop: '80px', marginBottom: '70px' }}>
 
 
@@ -122,7 +129,7 @@ function App() {
 
 
             <Routes>
-              <Route path="/" element={<Adlist />} />
+               <Route path="/" element={<Adlist />} />
               <Route path="/Home" element={<House />} />
               <Route path="/Mobile" element={<Mobile />} />
               <Route path="/Pets" element={<Pets />} />
@@ -130,7 +137,7 @@ function App() {
               <Route path="/Other" element={<Other />} />
               <Route path="/login-singup" element={<Users />} />
               <Route path="/UserProfil" element={<UserProfile />} />
-              <Route path="/createad" element={<Createad></Createad>} />
+              <Route path="/createad" element={<Createad></Createad>} /> 
               {/* this is route for popup  */}
 
 
